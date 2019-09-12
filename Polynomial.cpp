@@ -31,10 +31,10 @@ void Polynomial::add(TipoEntero coeficiente, TipoEntero exponente){
         };
 
     }else{
-        pCoeficientes[numTerminos] = coeficiente;
-        pExponentes[numTerminos] = exponente;
+        pCoeficientes[0] = coeficiente;
+        pExponentes[0] = exponente;
+        numTerminos++;
     }
-
 
 }
 
@@ -44,11 +44,11 @@ TipoEntero Polynomial::degree() {
 }
 
 
-ostream& operator<<(ostream &os, Polynomial &polinomio) {
+ostream& operator<<(ostream &os, const Polynomial polinomio) {
 
     for(TipoEntero i=0; i<polinomio.numTerminos;i++)
         for(TipoEntero j=0; j<polinomio.numTerminos;j++){
-            if(polinomio.pExponentes[j] == i){
+            if(polinomio.pExponentes[j] == i && i != j){
                  cout << showpos << polinomio.pCoeficientes[j];
                  cout << "x^" << polinomio.pExponentes[j];
             }
@@ -135,7 +135,7 @@ Polynomial Polynomial::operator+(TipoEntero escalar) {
 
     newPoli->grado = grado;
 
-    return newPoli;
+    return *newPoli;
 }
 
 void Polynomial::operator+=(TipoEntero escalar) {
@@ -156,9 +156,17 @@ void Polynomial::operator+=(TipoEntero escalar) {
 Polynomial Polynomial::operator*(Polynomial &polinomio) {
     Polynomial* newPoli = new Polynomial();
 
+    for(TipoEntero i =0;i<numTerminos;i++){
+        for(TipoEntero j=0;j<polinomio.numTerminos;j++){
+            newPoli->pCoeficientes[i] = pCoeficientes[i]*polinomio.pCoeficientes[j];
+            newPoli->pExponentes[i] = ;
+        };
+    }
 
+    newPoli->grado = grado;
 
-    return Polynomial();
+    return *newPoli;
+
 }
 
 

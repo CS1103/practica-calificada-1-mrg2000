@@ -6,7 +6,7 @@ using namespace std;
 
 //#define LISTA
 
-string get_expression(Polynomial& p) {
+string get_expression(Polynomial &p) {
 	stringstream ss;
 	ss << p;
 	return ss.str();
@@ -21,7 +21,7 @@ TEST_CASE("Polynomial") {
 		Polynomial p = { {1, 0}, {-1, 1}, {6, 3} };
 #else
 		Polynomial p;
-		p.add( 1, 0 );
+		p.add(1,0);
 		p.add( -1, 1 );
 		p.add( 6, 3 );
 #endif
@@ -40,6 +40,7 @@ TEST_CASE("Polynomial") {
 #endif
 		auto p2 = p1;
 		p2 = p2 + 10;
+
 
 		REQUIRE(get_expression(p1) == "1-1x^1+6x^3");
 		REQUIRE(get_expression(p2) == "11-1x^1+6x^3");
@@ -125,7 +126,7 @@ TEST_CASE("Polynomial") {
 		p1.add( 3, 1 );
 #endif
 		auto p2 = p1 * 10;
-		auto p3 = 20 * p1;
+		auto p3 = p1 * 20;
 		REQUIRE(get_expression(p1) == "1+3x^1");
 		REQUIRE(get_expression(p2) == "10+30x^1");
 		REQUIRE(get_expression(p3) == "20+60x^1");

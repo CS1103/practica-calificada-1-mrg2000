@@ -37,7 +37,7 @@ public:
     Polynomial operator^(TipoEntero escalar);
 
 
-    friend ostream& operator<<(ostream &os, Polynomial &polinomio);
+    friend ostream& operator<<(ostream &os, const Polynomial polinomio);
 
 };
 
