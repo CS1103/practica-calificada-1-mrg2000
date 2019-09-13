@@ -159,7 +159,6 @@ Polynomial Polynomial::operator*(Polynomial &polinomio) {
     for(TipoEntero i =0;i<numTerminos;i++){
         for(TipoEntero j=0;j<polinomio.numTerminos;j++){
             newPoli->pCoeficientes[i] = pCoeficientes[i]*polinomio.pCoeficientes[j];
-            newPoli->pExponentes[i] = ;
         };
     }
 
@@ -187,5 +186,24 @@ Polynomial Polynomial::operator*(TipoEntero escalar) {
 
 
 Polynomial Polynomial::operator^(TipoEntero escalar) {
-    return Polynomial();
+
+    Polynomial* newPoli = new Polynomial();
+    Polynomial* aux = new Polynomial();
+
+
+    for(TipoEntero i=0;i<numTerminos;i++){
+        newPoli->pCoeficientes[i] = pCoeficientes[i];
+        newPoli->pExponentes[i] = pExponentes[i];
+        newPoli->grado = grado;
+        newPoli->numTerminos = numTerminos;
+    }
+
+    for(TipoEntero i=0; i<escalar;i++){
+        aux = newPoli*newPoli;
+    }
+
+
+
+
+    return *aux();
 }
